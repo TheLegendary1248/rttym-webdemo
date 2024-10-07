@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Beatmania Prototype with Cross Lanes</title>
+    <style>
+        :root {
+          --cellSize: 20px;
+          --laneSize: 32;
+          --lanes: 0;
+          --gridLength: calc(var(--laneSize) * 2 + var(--lanes));
+          background-color: #161620;
+        }
+        #grid {
+            display: grid;
+            grid-template-columns: repeat(calc(var(--laneSize) * 2 + var(--lanes)), var(--cellSize)); /* 4 vertical lanes */
+            grid-template-rows: repeat(calc(var(--laneSize) * 2 + var(--lanes)), var(--cellSize)); /* 4 vertical lanes */
+            position: relative;
+        }
+        #vertArea, #horzArea {
+          background-color:#fee3;
+        }
+        #vertArea {
+          grid-column: var(--laneSize) / span var(--lanes);
+          grid-row: 1 / -1; 
+        }
+        #horzArea {
+          grid-row: var(--laneSize) / span var(--lanes);
+          grid-column: 1 / -1; 
+        }
+        .hitZoneCell {
+          grid-row: calc()
+        }
+
+        .cell {
+            width: var(--cellSize);
+            height: var(--cellSize);
+            border: 1px solid #333;
+            background-color: #f0f0f0;
+        }
+        .cell.dirDown {
+            grid-row: var(--y);
+            grid-column: var(--x);
+        }
+        .cell.dirUp {}
+        /* Horizontal lanes in the middle */
+        .horizontal-lane {
+            position: absolute;
+            top: 50%; /* Position the horizontal lanes in the middle */
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .horizontal-cell {
+            width: 100px;
+            height: 50px;
+            border: 1px solid #333;
+            background-color: #d0d0d0;
+        }
+    </style>
+</head>
+<body>
+    <div id="grid">
+      <div id="vertArea"></div>
+      <div id="horzArea"></div>
+    </div>
+
+    <!-- Horizontal lanes overlay -->
+    <div class="horizontal-lane" id="horizontal-lane"></div>
+
+    <script>
+  let areas;
+  let grid = document.getElementById("grid")
+  // Function to generate vertical lanes
+  function generateGrid(lanes, depth) {
+    forCr
+    return null
+      const gridContainer = document.getElementById('grid');
+      gridContainer.innerHTML = '';
+      
+      let areas = []
+      // Create cells for vertical lanes
+      for (let area = 0; area < 4; i++){
+        for (let i = 0; i < lanes * depth; i++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            gridContainer.appendChild(cell);
+        }
+      }
+     //Create cells for left horizontal lanes
+      
+  }
+
+  // Function to generate horizontal lanes
+  function generateHorizontalLanes(lanes) {
+      const horizontalLane = document.getElementById('horizontal-lane');
+      horizontalLane.innerHTML = '';
+
+      // Create horizontal cells for the horizontal lanes
+      for (let i = 0; i < lanes; i++) {
+          const cell = document.createElement('div');
+          cell.classList.add('horizontal-cell');
+          horizontalLane.appendChild(cell);
+      }
+  }
+
+  // Function to change the background color of a specific vertical cell
+  function changeVerticalCellColor(lane, depth, color) {
+      const index = (depth * 4) + lane;
+      const cell = document.querySelector(`#grid .cell:nth-child(${index + 1})`);
+      if (cell) {
+          cell.style.backgroundColor = color;
+      }
+  }
+
+  // Function to change the background color of a specific horizontal cell
+  function changeHorizontalCellColor(lane, color) {
+      const cell = document.querySelector(`#horizontal-lane .horizontal-cell:nth-child(${lane + 1})`);
+      if (cell) {
+          cell.style.backgroundColor = color;
+      }
+  }
+  // generateHorizontalLanes(horizontalLanes);
+  function uploadMap(){}
+  function updateMapSelect(){}
+  let rootElem = document.querySelector(":root")
+  let gridDat = {
+    lanes: 4,
+    laneSize: 32,
+    cellSize: 20
+  }
+  for(let i = 0; i < gridDat.lanes; i++){
+    let hitZoneCellElem = document.createElement("div")
+    hitZoneCellElem.classList.add("hitZoneCell")
+    hitZoneCellElem.style.gridRow = `${gridDat.laneSize + i}`
+    hitZoneCellElem.style.gridColumn = `${gridDat.laneSize + i}`
+    hitZoneCellElem.style.backgroundColor = `hsl(${i / gridDat.lanes}turn 100% 50%)`
+    grid.appendChild(hitZoneCellElem)
+  }
+  function updateGrid(gridOpts){
+    
+  }
+  
+  function setPauseState(){}
+  </script>
+</body>
+</html>
